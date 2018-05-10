@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>java test</title>
+
+    </h:head>
+    <h:body>
+
+        <ui:composition template="/templates/library_template.xhtml">
+
+
+            <ui:define name="products_count">
+                <p><strong>Найдено позиций: </strong>
+                    <h:outputText value="#{productListController.currentProductList.size()}" id="booksCount"></h:outputText> 
+                </p>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="booksForm">  
+                    <h:panelGroup id ="admin_tools" >  
+                        <h:commandLink styleClass="content_link" action="#{productListController.switchAddMode()}"  >
+                            <h:graphicImage library="images" name="add.jpg" />
+                            <h:outputText value="Добавить"></h:outputText>
+                        </h:commandLink>  
+                    </h:panelGroup>
+                    <br/>    
+                    <h:dataTable id="booksList" value="#{productListController.currentProductList}" var="b" cellspacing="10px" columnClasses="col1, col2, col3"> 
+                        <h:column>
+                            <p><h:outputText value="#{b.name}" ></h:outputText>
+
+<!--                            <p:commandLink styleClass="mr" actionListener="#{productListController.switchEditMode()}" title="Изменить" >  
+ <p class="edit">#{msg.edit}</p>
+<f:setPropertyActionListener value="#{b}"  target="#{productListController.selectedProduct}" />
+</p:commandLink> -->
+
+
+                            </p>
+                        </h:column>
+                        <h:column>
+                            <div>
+                                <p><strong>Категория: </strong> <h:outputText value="#{b.category.name}" /></p>
+                                <p><strong>Описание:</strong> 
+                                    <h:outputText value="#{b.description}" />
+                                </p>
+                            </div>
+                        </h:column>
+                        <h:column>
+                            <h:commandLink styleClass="content_link" action="#{productListController.switchEditMode()}"  >
+                                <h:graphicImage library="images" name="edit.jpg" />
+                                <f:param name="product" value="#{b}"/>
+                                <f:setPropertyActionListener value="#{b}" target="#{productListController.selectedProduct}" />
+                            </h:commandLink>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+
+</html>
+

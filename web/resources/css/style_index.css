@@ -1,0 +1,66 @@
+body {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    background-color: #eaeaea;
+    margin:100px;
+}
+
+.title {
+    color: #000;
+    text-align:center;
+    font-size:18px;
+    font-weight:bold;
+
+}
+
+.text{
+
+    padding-left:50px;
+    padding-right:50px;
+}
+
+.login_form{
+    padding-left:50px;
+    text-align: center;
+    padding: 20px;
+}
+
+.login_div{
+    width:400px;
+    border: 1px solid #eaeaea;
+    margin: 0 auto;
+    padding:10px;
+    height: 140px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.login_div p{
+    text-align: left;
+
+}
+
+.footer{
+    color:#cccccc;
+    text-align: center;
+    margin:50px;
+}
+
+.content{
+    height:20px;
+
+}
+
+.error{
+    color:#ff0000;
+    font-style: italic;
+    font-size: 12px;
+
+}
+
+
+
+
+

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <title>welcome</title>
+        <h:outputStylesheet library="css" name="style_index.css"  />
+    </h:head>
+    <h:body>
+
+        <div class="content">
+            <p class="title">java test</p>
+        </div>
+
+        <h:panelGroup id="login_div" styleClass="login_div" layout="block">
+            <h:form styleClass="login_form" id="login_form">
+                <table align="left" width="350">
+                    <tr>
+                        <td width="100" align="left"><span style="color:red;">*</span> логин</td>
+                        <td width="200"><h:inputText id="username" value="#{user.username}" required="true" requiredMessage="Введите логин">
+                            </h:inputText>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="left"><span style="color:red;">*</span> пароль</td>
+                        <td><h:inputSecret  id="password" value="#{user.password}" required="true" redisplay="true" requiredMessage="Введите пароль">
+                                <f:validator validatorId="test.web.validators.LoginValidator"/>
+                            </h:inputSecret></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <h:commandButton action="#{user.login()}" value="Войти"  >
+                            </h:commandButton>
+                        </td>
+                    </tr> 
+                    <tr><td colspan="3">
+                            <h:message id="loginError" for="login_form" styleClass="error"/>
+                            <h:message id="username_input" for="username" styleClass="error"/>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </table>
+            </h:form>
+        </h:panelGroup>
+        <br />
+        <br />
+    </h:body>
+
+</html>
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>test java</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <p:growl life="3000" globalOnly="true"></p:growl>
+
+
+        <h:form id="booksForm">
+            <p:panelGrid id="bookDetails" columns="2" styleClass="book-details">
+
+                <p:outputLabel value="Наименование:" styleClass="edit-title"/>                                     
+                <p:inputText value="#{productListController.selectedProduct.name}" styleClass="name_edit" />
+
+                <p:outputLabel value="Описание:" styleClass="edit-title"/>
+                <p:inputText value="#{productListController.selectedProduct.description}" styleClass="name_edit" />
+
+                <p:outputLabel value="Категория:" styleClass="edit-title"/>
+                <p:selectOneMenu  value="#{productListController.selectedProduct.category}" converter="#{categoryController}">
+                    <f:selectItems value="${categoryController.selectItems}"/>
+                </p:selectOneMenu>
+
+                <f:facet name="footer">
+                    <p:commandButton id="saveButton" action="#{productListController.saveProduct()}" styleClass="button-update" value="Сохранить" icon="ui-icon-check">
+                    </p:commandButton>  
+
+                    <p:commandButton immediate="true" action="#{productListController.cancelModes()}" icon="ui-icon-close" value="Отмена" global="false">
+                    </p:commandButton>  
+                </f:facet>
+            </p:panelGrid>
+        </h:form>
+
+
+    </h:body>
+</html>
